@@ -7,9 +7,12 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Collections;
 
 /**
  * Created by LaunchCode
@@ -123,6 +126,24 @@ public class JobData {
             System.out.println("Failed to load job data");
             e.printStackTrace();
         }
+    }
+
+    public static void findByValue(String searchTerm) {
+        String valueToSearch = searchTerm.toLowerCase();
+
+        for (HashMap<String, String> hashMap : JobData.findAll()) {
+            for (String key : hashMap.keySet()) {
+                String lowerCaseJob = hashMap.get(key).toLowerCase();
+                if (lowerCaseJob.contains(valueToSearch)) {
+                    for (String printKey : hashMap.keySet()) {
+                        System.out.println(printKey + ": " + hashMap.get(printKey));
+                    }
+                    System.out.println("\n*****\n");
+                    break;
+                }
+            }
+        }
+
     }
 
 }
