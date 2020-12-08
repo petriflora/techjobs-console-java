@@ -8,11 +8,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Collections;
+import java.util.*;
+
 
 /**
  * Created by LaunchCode
@@ -64,8 +61,8 @@ public class JobData {
      * For example, searching for employer "Enterprise" will include results
      * with "Enterprise Holdings, Inc".
      *
-     * @param column   Column that should be searched.
-     * @param value Value of teh field to search for
+     * @param column Column that should be searched.
+     * @param value Value of the field to search for
      * @return List of all jobs matching the criteria
      */
     public static ArrayList<HashMap<String, String>> findByColumnAndValue(String column, String value) {
@@ -79,7 +76,7 @@ public class JobData {
 
             String aValue = row.get(column);
 
-            if (aValue.contains(value)) {
+            if (aValue.toLowerCase().contains(value.toLowerCase())) {
                 jobs.add(row);
             }
         }
@@ -136,6 +133,7 @@ public class JobData {
                 String lowerCaseJob = hashMap.get(key).toLowerCase();
                 if (lowerCaseJob.contains(valueToSearch)) {
                     for (String printKey : hashMap.keySet()) {
+//                        Collections.sort(printKey); throws error - no suitable method found, Collections is not applicable
                         System.out.println(printKey + ": " + hashMap.get(printKey));
                     }
                     System.out.println("\n*****\n");

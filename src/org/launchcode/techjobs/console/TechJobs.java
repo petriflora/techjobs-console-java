@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Comparator;
+import java.util.Collections;
 
 /**
  * Created by LaunchCode
@@ -40,7 +42,7 @@ public class TechJobs {
 
                 if (columnChoice.equals("all")) {
                     //insert sort here
-                    system.out.println("Do you want to sort this list alphabetically by Position Name?");
+                    System.out.println("Do you want to sort this list alphabetically by Position Name?");
 
                     //end sort here
                     printJobs(JobData.findAll());
